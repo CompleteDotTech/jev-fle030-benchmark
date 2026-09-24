@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "completetech-jev-fle030"
+version = "0.1.0"
+description = "Pinned FLE 0.3.0 setup and a bounded typed-action Jev benchmark harness"
+requires-python = ">=3.11,<3.14"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "CompleteTech LLC"}]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+jev-fle = "jev_fle.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["jev_fle*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

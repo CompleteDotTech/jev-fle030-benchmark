@@ -1,0 +1,30 @@
+{
+  "prepared_for": "Factorio Learning Environment v0.3.0 with Jev",
+  "generated_utc": "2026-09-24T05:21:53.770318+00:00",
+  "python_tested": "3.13.5",
+  "python_bootstrap_target": "3.11 (3.12 permitted without uv)",
+  "tests": 91,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "offline_tests_passed": true,
+  "compileall_passed": true,
+  "adapter_wheel_build_passed": true,
+  "fle_commit": "714482a6fc3ed3da6b6288c35fb697c458415e31",
+  "model": "jev-1.13.0",
+  "adapter_source_fingerprint": "b2bfd3fa07be2546169d880f6f29e868f119599ac2bd748cfb1109b4ec0496f2",
+  "fle_dependencies_installed_here": false,
+  "fle_native_imports_executed_here": false,
+  "docker_available_here": false,
+  "typesafe_api_key_present_here": false,
+  "live_jev_requests_made": 0,
+  "live_factorio_episodes_run": 0,
+  "benchmark_score": null,
+  "existing_gameplay_repository_modified": false,
+  "limitations": [
+    "Synthetic tests validate contracts and guardrails, not Factorio competence.",
+    "Complete FLE dependency resolution and native engine startup still require an execution host.",
+    "The hosted Jev request path has not been exercised with a real key.",
+    "This new custom typed-action scaffold is not the existing gameplay controller or the stock leaderboard agent."
+  ]
+}

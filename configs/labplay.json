@@ -1,0 +1,33 @@
+{
+  "policy": "jev",
+  "tasks": [
+    "advanced_circuit_throughput",
+    "automation_science_pack_throughput",
+    "battery_throughput",
+    "chemical_science_pack_throughput",
+    "crude_oil_throughput",
+    "electronic_circuit_throughput",
+    "engine_unit_throughput",
+    "inserter_throughput",
+    "iron_gear_wheel_throughput",
+    "iron_ore_throughput",
+    "iron_plate_throughput",
+    "logistics_science_pack_throughput",
+    "low_density_structure_throughput",
+    "military_science_pack_throughput",
+    "petroleum_gas_throughput",
+    "piercing_round_throughput",
+    "plastic_bar_throughput",
+    "processing_unit_throughput",
+    "production_science_pack_throughput",
+    "steel_plate_throughput",
+    "stone_wall_throughput",
+    "sufuric_acid_throughput",
+    "sulfur_throughput",
+    "utility_science_pack_throughput"
+  ],
+  "steps": 64,
+  "attempts": 8,
+  "policy_seed": 20260924,
+  "episode_timeout_seconds": 1800
+}

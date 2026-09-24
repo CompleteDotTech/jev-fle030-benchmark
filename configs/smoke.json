@@ -1,0 +1,10 @@
+{
+  "policy": "jev",
+  "tasks": [
+    "iron_ore_throughput"
+  ],
+  "steps": 4,
+  "attempts": 1,
+  "policy_seed": 20260924,
+  "episode_timeout_seconds": 600
+}

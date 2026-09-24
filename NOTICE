@@ -1,0 +1,11 @@
+CompleteTech Jev / FLE 0.3.0 adapter
+
+Factorio Learning Environment is the upstream project by Jack Hopkins and its
+contributors, distributed separately under its own MIT license. The generic
+steam-power template adapts the public v0.3.0 release example. Attribution and
+source URLs are listed in docs/sources.md. This project is not endorsed by FLE,
+Wube Software, or TypeSafe AI. Factorio and Jev remain their owners' products;
+no game binary, provider credential, or font file is included.
+
+Adapted example copyright (c) 2025 Factorio Learning Environment Contributors.
+The upstream MIT notice is included in docs/UPSTREAM-FLE-LICENSE.txt.

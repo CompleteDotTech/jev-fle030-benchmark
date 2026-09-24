@@ -1,0 +1,14 @@
+{
+  "python": "3.13.5",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "docker_cli": false,
+  "typesafe_api_key_present": false,
+  "fle_pinned_source": false,
+  "engine_verified": false,
+  "errors": [
+    "FLE: PackageNotFoundError: No package metadata was found for factorio-learning-environment"
+  ],
+  "fle_imports": false,
+  "ready_for_live_run": false
+}

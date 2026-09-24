@@ -1,0 +1,10 @@
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /mnt/data/jev-fle030-benchmark
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: completetech-jev-fle030
+  Building wheel for completetech-jev-fle030 (pyproject.toml): started
+  Building wheel for completetech-jev-fle030 (pyproject.toml): finished with status 'done'
+  Created wheel for completetech-jev-fle030: filename=completetech_jev_fle030-0.1.0-py3-none-any.whl size=33429 sha256=5aaeb1bd879021b40998dd72985e153d8b8863ceb43af90908e90f8d9e5834fe
+  Stored in directory: /tmp/pip-ephem-wheel-cache-on49ly1x/wheels/56/1d/e7/0a05747c8840b70f2fc6f3527a6efb0a1f938b59ec3959ab31
+Successfully built completetech-jev-fle030

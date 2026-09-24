@@ -1,0 +1,6 @@
+# Immutable FLE source: exact v0.3.0 release commit, not main/latest.
+factorio-learning-environment[eval] @ git+https://github.com/JackHopkins/factorio-learning-environment.git@714482a6fc3ed3da6b6288c35fb697c458415e31
+# FLE 0.3.0 uses gym, NOT gymnasium.
+gym==0.26.2
+# Upstream requires NumPy >= 2.2.3; keep within its major series.
+numpy>=2.2.3,<3

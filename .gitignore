@@ -1,0 +1,13 @@
+.venv/
+.runtime/
+results/
+.env
+.env.*
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+environment.freeze.txt
+installation-check.json
