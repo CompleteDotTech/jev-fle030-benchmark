@@ -23,6 +23,8 @@ def test_all_skill_branches_compile(catalog, observation, prefix, expected):
     ast.parse(code)
     assert check_program(code) == code
     assert receipt["skill"] == expected and len(code) <= 10000
+    if expected == "inspect_recipe":
+        assert "get_prototype_recipe(" in code
     assert not any(word in code for word in ("import ", "rcon", "send_command", "__"))
     assert all(1 <= len(q["criteria"]) <= 255 for _, qs in client.requests for q in qs.values())
 

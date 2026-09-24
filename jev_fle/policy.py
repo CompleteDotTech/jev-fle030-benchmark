@@ -34,7 +34,7 @@ CALLS = {
     "print", "min", "max", "int", "Position", "BuildingBox", "inspect_inventory",
     "get_entity", "get_entities", "nearest", "nearest_buildable", "move_to",
     "place_entity", "place_entity_next_to", "rotate_entity", "connect_entities",
-    "insert_item", "extract_item", "set_entity_recipe", "get_recipe", "pickup_entity",
+    "insert_item", "extract_item", "set_entity_recipe", "get_prototype_recipe", "pickup_entity",
     "sleep", "harvest_resource",
 }
 NUMBER = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?"
@@ -212,7 +212,7 @@ class TypedPolicy:
         recipe_refs = {e.label(): e for e in refs if e.name in RECIPE_MACHINES}
         media = {name: name for name in sorted(CONNECTIONS & inv.keys()) if inv[name] > 0}
         skills = {
-            "Inspect an item/recipe's ingredients using get_recipe": "inspect_recipe",
+            "Inspect an item/recipe's ingredients using get_prototype_recipe": "inspect_recipe",
             "Locate the nearest resource (does not mine it)": "locate",
             "Allow one second to elapse; throughput is already checked after every action": "wait",
         }
@@ -247,7 +247,7 @@ class TypedPolicy:
             code = f"print(nearest(Resource.{resource}))"
         elif skill == "inspect_recipe":
             recipe = self.pick(state, recipe=("Which ingredient recipe is needed for planning?", self.catalog.recipes))["recipe"]
-            code = f"print(get_recipe({recipe}))"
+            code = f"print(get_prototype_recipe({recipe}))"
         elif skill == "harvest_coal":
             code = "_jpos = nearest(Resource.Coal)\nmove_to(_jpos)\nprint(harvest_resource(_jpos, quantity=50))"
         elif skill == "power":
