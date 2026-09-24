@@ -46,7 +46,9 @@ def validate_response(response: Any, questions: dict, model: str) -> dict:
         allowed = set(question["criteria"])
         if (not isinstance(probabilities, dict) or set(probabilities) != allowed
                 or any(not _probability(v) for v in probabilities.values())
-                or abs(sum(probabilities.values()) - 1) > 0.005):
+                # The provider rounds displayed probabilities to hundredths;
+                # a valid large Choice response can therefore total 0.99.
+                or abs(sum(probabilities.values()) - 1) > 0.015):
             raise ModelProtocolError("Invalid or incomplete probability distribution")
         choice = answer.get("choice")
         if choice not in allowed or not _probability(answer.get("confidence")):

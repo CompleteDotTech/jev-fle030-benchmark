@@ -18,6 +18,22 @@ def test_valid_response():
     assert validate_response(response(), Q, MODEL)["pick"]["choice"] == "a"
 
 
+def test_rounded_probability_total_from_large_choice():
+    criteria = {f"v{i:03d}": str(i) for i in range(126)}
+    question = {"recipe": {"type": "choice", "criteria": criteria}}
+    probabilities = {key: 0.0 for key in criteria}
+    probabilities["v047"] = 0.69
+    probabilities["v048"] = 0.30
+    value = {"model": MODEL, "answers": {"recipe": {"type": "choice",
+             "choice": "v047", "confidence": 0.69,
+             "probabilities": probabilities}},
+             "usage": {"input_tokens": 100, "output_tokens": 10}}
+    assert validate_response(value, question, MODEL)["recipe"]["choice"] == "v047"
+    probabilities["v048"] = 0.28
+    with pytest.raises(ModelProtocolError):
+        validate_response(value, question, MODEL)
+
+
 @pytest.mark.parametrize("mutation", [
     lambda r: r.update(model="jev-latest"),
     lambda r: r.update(answers={}),
