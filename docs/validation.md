@@ -5,12 +5,25 @@
 Python syntax compilation and construction of the adapter's Python wheel also passed.
 The tests ran on Python 3.13.5; bootstrap targets Python 3.11.
 
-## Not executed
+## Native integration validation (2026-09-24)
 
-The FLE dependency installation, native Gym/FLE imports, Docker image startup,
-and real Factorio benchmark episodes were not executed in the preparation
-environment. Docker and FLE were absent. No score is claimed. The synthetic
-end-to-end test substitutes both HTTP and the engine.
+Python 3.11 bootstrap installed pinned FLE commit
+`714482a6fc3ed3da6b6288c35fb697c458415e31`; the 24-task import check
+passed after pinning `a2a-sdk==0.3.26`. Docker started a dedicated Factorio
+1.1.110 server, verified its image digest and loopback port bindings, and the
+installed 1.1.110 GUI client joined at `127.0.0.1:35197`.
+
+The native one-step engine smoke trial completed (task success false). A first
+Jev gameplay smoke trial stopped before an action when the provider returned an
+invalid probability distribution. The adapter now makes a bounded fresh attempt
+while still rejecting malformed answers. The subsequent live Jev smoke trial
+completed all four actions with 11 HTTP attempts and two native action errors;
+the task verifier reported success false. This is one completed smoke trial,
+not a 24-task evaluation or a score. The local `results/` receipts are ignored
+by Git and include no API key.
+
+The full 192-trial sweep has not been run. Its duration, provider cost, and
+completion rate remain unknown.
 
 ## Live TypeSafe API smoke test (2026-09-24)
 
@@ -20,6 +33,8 @@ and 31 output tokens. The result is local under ignored `results/`; no key or
 response body was added to this repository. This checks the hosted API path only.
 
 See `offline-tests.xml`, `offline-tests.txt`, `package-build.log`,
-`local-preflight.json` and `validation.json` for machine-readable evidence.
+`local-preflight.json`, `validation.json`, and `native-validation.json` for
+machine-readable evidence. `validation.json` records the earlier preparation
+session; `native-validation.json` records the later live validation.
 
 The existing gameplay repositories were not modified.

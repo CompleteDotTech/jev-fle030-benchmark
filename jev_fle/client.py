@@ -136,6 +136,13 @@ class JevClient:
                 except (ValueError, AttributeError):
                     delay = 0
                 self._sleep(min(30, max(0.5 * 2 ** attempt, delay)))
+            except ModelProtocolError:
+                # A provider response can be incomplete or inconsistent. Keep
+                # the guard strict, but allow a bounded fresh attempt.
+                self.emit("api_error", request_hash=request_hash, status="protocol_error")
+                if attempt == self.retries:
+                    raise
+                self._sleep(min(8, 0.5 * 2 ** attempt))
             except (urllib.error.URLError, TimeoutError, OSError):
                 self.emit("api_error", request_hash=request_hash, status="transport_error")
                 if attempt == self.retries:

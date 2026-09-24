@@ -3,11 +3,11 @@
 A version-pinned setup and a custom **Jev typed-action harness** for the 24-task
 Factorio Learning Environment v0.3.0 lab-play benchmark.
 
-**Status:** the Python package and offline tests were executed in the preparation
-session. A live TypeSafe API smoke test passed on 2026-09-24 with one request to
-`jev-1.13.0`. Docker, the FLE dependency stack, and a Factorio server were not
-validated here. No real Factorio episode or benchmark result is included. See
-`docs/validation.md` and `docs/offline-tests.xml` for the validation boundary.
+**Status:** the pinned FLE environment, dedicated Factorio server, visible GUI
+client, native engine smoke test, and bounded live Jev gameplay smoke test were
+validated on 2026-09-24. The four-action Jev trial completed without native task
+success. No full 192-trial sweep or aggregate benchmark score is included. See
+`docs/validation.md` for the validation boundary.
 
 This is a standalone integration. It does **not** modify, deploy, or benchmark the
 existing `CompleteDotTech/jev-factorio-agent` controller. Its action scaffold is
@@ -22,6 +22,7 @@ new and deliberately isolated from your ongoing gameplay world.
 | Jev | `jev-1.13.0` |
 | Factorio headless image | `factoriotools/factorio:1.1.110`; resolved to a registry digest on first pull |
 | Gym API | `gym==0.26.2`, not Gymnasium |
+| A2A SDK compatibility | `a2a-sdk==0.3.26` |
 | Scenario | `default_lab_scenario`, one agent, no additional mods, vision disabled |
 | Full sweep | 24 tasks × 8 attempts × at most 64 actions = 192 episodes, at most 12,288 actions |
 
@@ -43,6 +44,13 @@ No GPU is required on the host for this adapter: it calls the hosted Jev endpoin
 The GUI Factorio client is optional; FLE v0.3.0 supports headless operation. To
 watch via a GUI, use a compatible 1.1.110 installation and the appropriate game
 license. The benchmark server's local game port is `35197`.
+
+On Windows with a compatible Factorio installation, launch the GUI after
+`cluster start` and connect to `127.0.0.1:35197` (Multiplayer → Connect to
+address). You can also launch `factorio.exe --mp-connect 127.0.0.1:35197`.
+The benchmark resets its disposable world between episodes and pauses between
+actions, so expect the view to reload or stop moving during decisions. Observe
+only: player actions would change the benchmark state.
 
 A TypeSafe API key is needed only for `api-smoke` and Jev runs. Supply it through
 the masked `--prompt-key` prompt or the local `TYPESAFE_API_KEY` environment variable.

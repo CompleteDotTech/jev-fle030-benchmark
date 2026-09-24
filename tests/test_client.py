@@ -91,6 +91,23 @@ def test_retry_recovers_with_bounded_backoff():
     assert sleeps == [30] and c.calls == 2
 
 
+def test_invalid_provider_distribution_gets_one_fresh_attempt():
+    attempts, events = [], []
+    def transport(payload):
+        attempts.append(payload)
+        bad = response()
+        if len(attempts) == 1:
+            bad["answers"]["pick"]["probabilities"]["a"] = 0.1
+        return bad
+    c = JevClient("fixture-key", max_calls=2, retries=1, transport=transport,
+                  sleeper=lambda seconds: None,
+                  emit=lambda event, **data: events.append((event, data)))
+    assert c.choose({}, Q) == {"pick": "a"}
+    assert c.calls == 2
+    assert [event for event, _ in events] == ["api_attempt", "api_error", "api_attempt", "api_response"]
+    assert events[1][1]["status"] == "protocol_error"
+
+
 def test_auth_errors_do_not_retry_or_reflect_body():
     def transport(payload):
         raise urllib.error.HTTPError("https://api.typesafe.ai", 401, "fixture-key", {}, None)

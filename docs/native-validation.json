@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-24",
+  "host": "Windows Docker Desktop with Linux containers",
+  "python": "3.11.15",
+  "fle_version": "0.3.0",
+  "fle_commit": "714482a6fc3ed3da6b6288c35fb697c458415e31",
+  "a2a_sdk": "0.3.26",
+  "factorio_server_version": "1.1.110",
+  "factorio_gui_version": "1.1.110",
+  "gui_joined_local_server": true,
+  "tests_passed": 92,
+  "engine_smoke": {"status": "complete", "steps": 1, "native_success": false},
+  "jev_smoke": {
+    "status": "complete",
+    "task": "iron_ore_throughput",
+    "steps": 4,
+    "native_success": false,
+    "native_step_errors": 2,
+    "api_attempts": 11,
+    "input_tokens": 18952,
+    "output_tokens": 1142
+  },
+  "full_192_trial_sweep_run": false,
+  "aggregate_benchmark_score": null
+}

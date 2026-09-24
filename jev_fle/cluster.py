@@ -79,6 +79,10 @@ def prepare_cluster(rcon_port: int = 27100, game_port: int = 35197) -> dict:
     service = data["services"]["factorio_0"]
     if service["image"] != FACTORIO_IMAGE:
         raise RuntimeError("Unexpected upstream Factorio image")
+    # Upstream enables a whitelist but does not ship its file. This dedicated
+    # loopback-only server must allow the local GUI spectator to connect.
+    service["command"] = service["command"].replace(
+        " --server-whitelist /opt/factorio/config/server-whitelist.json --use-server-whitelist", "")
     service["ports"] = [f"127.0.0.1:{game_port}:34197/udp", f"127.0.0.1:{rcon_port}:27015/tcp"]
     service["restart"] = "no"
     atomic_json(COMPOSE, data)
